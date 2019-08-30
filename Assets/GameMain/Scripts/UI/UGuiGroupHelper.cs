@@ -27,27 +27,27 @@ namespace StarForce
         /// <param name="depth">界面组深度。</param>
         public override void SetDepth(int depth)
         {
-            m_Depth = depth;
-            m_CachedCanvas.overrideSorting = true;
-            m_CachedCanvas.sortingOrder = DepthFactor * depth;
+//            m_Depth = depth;
+//            m_CachedCanvas.overrideSorting = true;
+//            m_CachedCanvas.sortingOrder = DepthFactor * depth;
         }
 
         private void Awake()
         {
-            m_CachedCanvas = gameObject.GetOrAddComponent<Canvas>();
-            gameObject.GetOrAddComponent<GraphicRaycaster>();
+//            m_CachedCanvas = gameObject.GetOrAddComponent<Canvas>();
+//            gameObject.GetOrAddComponent<GraphicRaycaster>();
         }
 
         private void Start()
         {
-            m_CachedCanvas.overrideSorting = true;
-            m_CachedCanvas.sortingOrder = DepthFactor * m_Depth;
-
-            RectTransform transform = GetComponent<RectTransform>();
-            transform.anchorMin = Vector2.zero;
-            transform.anchorMax = Vector2.one;
-            transform.anchoredPosition = Vector2.zero;
-            transform.sizeDelta = Vector2.zero;
+//            m_CachedCanvas.overrideSorting = true;
+//            m_CachedCanvas.sortingOrder = DepthFactor * m_Depth;
+//
+//            RectTransform transform = GetComponent<RectTransform>();
+//            transform.anchorMin = Vector2.zero;
+//            transform.anchorMax = Vector2.one;
+//            transform.anchoredPosition = Vector2.zero;
+//            transform.sizeDelta = Vector2.zero;
         }
     }
 }

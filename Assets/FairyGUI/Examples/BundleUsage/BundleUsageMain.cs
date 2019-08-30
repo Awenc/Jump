@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using FairyGUI;
+using UnityGameFramework.Runtime;
 #if UNITY_5_4_OR_NEWER
 using UnityEngine.Networking;
 #endif
