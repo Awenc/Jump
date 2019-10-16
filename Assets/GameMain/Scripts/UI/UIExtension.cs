@@ -119,6 +119,10 @@ namespace StarForce
         {
             uiComponent.CloseUIForm(uiForm.UIForm);
         }
+        public static void CloseUIForm(this UIComponent uiComponent, FGuiForm fguiForm)
+        {
+            uiComponent.CloseUIForm(fguiForm.UIForm);
+        }
 
         public static int? OpenUIForm(this UIComponent uiComponent, UIFormId uiFormId, object userData = null)
         {

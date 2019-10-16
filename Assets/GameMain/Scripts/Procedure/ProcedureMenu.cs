@@ -36,7 +36,7 @@ namespace StarForce
             GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
 
             m_StartGame = false;
-            GameEntry.UI.OpenUIForm(UIFormId.MenuForm, this);
+            GameEntry.UI.OpenUIForm(UIFormId.LoginPage, this);
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
@@ -44,12 +44,6 @@ namespace StarForce
             base.OnLeave(procedureOwner, isShutdown);
 
             GameEntry.Event.Unsubscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
-
-            if (m_MenuForm != null)
-            {
-                m_MenuForm.Close(isShutdown);
-                m_MenuForm = null;
-            }
         }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
@@ -66,13 +60,13 @@ namespace StarForce
 
         private void OnOpenUIFormSuccess(object sender, GameEventArgs e)
         {
-            OpenUIFormSuccessEventArgs ne = (OpenUIFormSuccessEventArgs)e;
-            if (ne.UserData != this)
-            {
-                return;
-            }
-
-            m_MenuForm = (MenuForm)ne.UIForm.Logic;
+//            OpenUIFormSuccessEventArgs ne = (OpenUIFormSuccessEventArgs)e;
+//            if (ne.UserData != this)
+//            {
+//                return;
+//            }
+//
+//            m_MenuForm = (MenuForm)ne.UIForm.Logic;
         }
     }
 }

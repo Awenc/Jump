@@ -10,7 +10,7 @@ using UnityGameFramework.Runtime;
 
 namespace StarForce
 {
-    public class MenuForm : UGuiForm
+    public class MenuForm : FGuiForm
     {
        
     }

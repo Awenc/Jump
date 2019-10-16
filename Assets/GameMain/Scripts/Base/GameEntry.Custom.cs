@@ -19,10 +19,19 @@ namespace StarForce
             get;
             private set;
         }
+        /// <summary>
+        /// FGUI管理
+        /// </summary>
+        public static FGuiComponent FGUI
+        {
+            get;
+            private set;
+        }
 
         private static void InitCustomComponents()
         {
             BuiltinData = UnityGameFramework.Runtime.GameEntry.GetComponent<BuiltinDataComponent>();
+            FGUI = UnityGameFramework.Runtime.GameEntry.GetComponent<FGuiComponent>();
         }
     }
 }

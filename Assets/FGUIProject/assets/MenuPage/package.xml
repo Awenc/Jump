@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<packageDescription id="ko1119if" jpegQuality="80" compressPNG="true">
+  <resources>
+    <component id="hnve0" name="Main.xml" path="/" exported="true"/>
+    <image id="hnve1" name="n2.png" path="/" exported="true"/>
+  </resources>
+  <publish name="MenuPage"/>
+</packageDescription>

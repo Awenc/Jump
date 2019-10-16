@@ -89,10 +89,21 @@ namespace FairyGUI
 				{
 					CreateContainer();
 
+#if UNITY_EDITOR
 					if (!string.IsNullOrEmpty(packagePath) && UIPackage.GetByName(packageName) == null)
-						UIPackage.AddPackage(packagePath);
+					{
+						UIPackage uiPackage= UIPackage.AddPackage(packagePath);
+					}
+#else
+					if (!string.IsNullOrEmpty(packagePath) && UIPackage.GetByName(packageName) == null)
+					{
+						AssetBundle ab = AssetBundle.LoadFromFile(Application.streamingAssetsPath+"/fgui/"+packageName.ToLower()+".dat");
+						UIPackage.AddPackage(ab);
+					}
+#endif		
 				}
 			}
+
 			else
 			{
 				//不在播放状态时我们不在OnEnable创建，因为Prefab也会调用OnEnable，延迟到Update里创建（Prefab不调用Update)
@@ -207,8 +218,20 @@ namespace FairyGUI
 			{
 				if (!_created && Application.isPlaying)
 				{
+#if UNITY_EDITOR
 					if (!string.IsNullOrEmpty(packagePath) && UIPackage.GetByName(packageName) == null)
+					{
+						Debug.Log("编辑器下执行该方法");
 						UIPackage.AddPackage(packagePath);
+					}
+#else
+					if (!string.IsNullOrEmpty(packagePath) && UIPackage.GetByName(packageName) == null)
+					{
+						Debug.Log("否则执行AB包里面的内容");
+						AssetBundle ab = AssetBundle.LoadFromFile(Application.streamingAssetsPath+"/fgui/"+packageName.ToLower()+".dat");
+						UIPackage.AddPackage(ab);
+					}
+#endif
 
 					CreateUI_PlayMode();
 				}
@@ -308,6 +331,7 @@ namespace FairyGUI
 
 		void CreateUI_PlayMode()
 		{
+			Debug.Log("开始画UI");
 			_created = true;
 
 			if (string.IsNullOrEmpty(packageName) || string.IsNullOrEmpty(componentName))

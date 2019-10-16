@@ -16,7 +16,8 @@ namespace StarForce
         /// <summary>
         /// 主菜单。
         /// </summary>
-        MenuForm = 1,
+        MenuPage = 1,
+        LoginPage = 2,
 
     }
 }
