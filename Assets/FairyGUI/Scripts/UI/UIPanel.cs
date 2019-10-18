@@ -331,7 +331,6 @@ namespace FairyGUI
 
 		void CreateUI_PlayMode()
 		{
-			Debug.Log("开始画UI");
 			_created = true;
 
 			if (string.IsNullOrEmpty(packageName) || string.IsNullOrEmpty(componentName))

@@ -71,7 +71,7 @@ namespace StarForce
                 if (GameEntry.Base.EditorResourceMode)
                 {
                     string packagePath =
-                        Utility.Text.Format("Assets/GameMain/FGUIResource/{0}/{0}", packageName);
+                        Utility.Text.Format("Assets/GameMain/FGuiResource/{0}/{0}", packageName);
 
                     uiPackage = UIPackage.AddPackage(packagePath);
                 }

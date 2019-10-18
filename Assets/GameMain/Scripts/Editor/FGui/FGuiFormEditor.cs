@@ -55,7 +55,7 @@ namespace StarForce.Editor
         private void FindDependencies(string packageName)
         {
             UIPackage uiPackage =
-                UIPackage.AddPackage(Utility.Text.Format("Assets/GameMain/FGUIResource/{0}/{0}", packageName));
+                UIPackage.AddPackage(Utility.Text.Format("Assets/GameMain/FGuiResource/{0}/{0}", packageName));
             for (int i = 0; i < uiPackage.dependencies.Length; i++)
             {
                 if (m_FguiDependenciesList.Contains(uiPackage.dependencies[i]["name"]))
