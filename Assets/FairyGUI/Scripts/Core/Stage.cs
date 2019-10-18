@@ -169,7 +169,7 @@ namespace FairyGUI
 			this.gameObject.AddComponent<StageEngine>();
 			this.gameObject.AddComponent<UIContentScaler>();
 			this.gameObject.SetActive(true);
-			Object.DontDestroyOnLoad(this.gameObject);
+//			Object.DontDestroyOnLoad(this.gameObject);
 
 			this.cachedTransform.localScale = new Vector3(StageCamera.UnitsPerPixel, StageCamera.UnitsPerPixel, StageCamera.UnitsPerPixel);
 

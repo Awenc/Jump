@@ -214,7 +214,7 @@ namespace FairyGUI
 			gameObject = new GameObject(gameObjectName);
 			cachedTransform = gameObject.transform;
 			if (Application.isPlaying)
-				Object.DontDestroyOnLoad(gameObject);
+//				Object.DontDestroyOnLoad(gameObject);
 			gameObject.hideFlags = DisplayOptions.hideFlags;
 			gameObject.SetActive(false);
 
@@ -1479,8 +1479,8 @@ namespace FairyGUI
 					if (gOwner == null || gOwner.parent == null)//如果gOwner还有parent的话，说明只是暂时的隐藏
 					{
 						ToolSet.SetParent(cachedTransform, _home);
-						if (_home == null)
-							Object.DontDestroyOnLoad(this.gameObject);
+//						if (_home == null)
+//							Object.DontDestroyOnLoad(this.gameObject);
 					}
 				}
 
