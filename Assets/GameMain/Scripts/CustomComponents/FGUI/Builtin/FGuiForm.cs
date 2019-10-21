@@ -70,7 +70,7 @@ namespace StarForce
             base.OnDepthChanged(uiGroupDepth, depthInUIGroup);
             int deltaDepth = FGuiGroupHelper.DepthFactor * uiGroupDepth + DepthFactor * depthInUIGroup - oldDepth +
                              OriginalDepth;
-            UIPanel.sortingOrder += deltaDepth;
+            UIPanel.sortingOrder = deltaDepth;
             OriginalDepth = UIPanel.sortingOrder;
             UIPanel.SetSortingOrder(UIPanel.sortingOrder, true);
         }
