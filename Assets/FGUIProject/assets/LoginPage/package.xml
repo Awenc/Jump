@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <packageDescription id="kymz0dik" jpegQuality="80" compressPNG="true">
-  <resources>
-    <component id="hnvez" name="Main.xml" path="/" exported="true"/>
-    <image id="hnve10" name="n1.png" path="/" exported="true"/>
-  </resources>
+  <resources/>
   <publish name="LoginPage"/>
 </packageDescription>

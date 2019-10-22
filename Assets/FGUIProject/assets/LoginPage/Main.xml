@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<component size="1920,1080">
-  <displayList>
-    <component id="n0_hnve" name="n0" src="hnve2" fileName="CommnetBtn.xml" pkg="kvnr6i2s" xy="814,697" size="355,162"/>
-    <text id="n1_hnve" name="n1" xy="839,725" size="302,106" fontSize="40" align="center" vAlign="middle" autoSize="none" text="开始"/>
-    <image id="n2_hnve" name="n2" src="hnve10" fileName="n1.png" xy="873,246"/>
-  </displayList>
-</component>

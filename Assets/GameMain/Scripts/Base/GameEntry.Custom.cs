@@ -27,11 +27,28 @@ namespace StarForce
             get;
             private set;
         }
+        
+        /// <summary>
+        /// Camera管理
+        /// </summary>
+        public static CameraComponent Camera
+        {
+            get;
+            private set;
+        }
+
+        public static GroundComponent Ground
+        {
+            get;
+            private set;
+        }
 
         private static void InitCustomComponents()
         {
             BuiltinData = UnityGameFramework.Runtime.GameEntry.GetComponent<BuiltinDataComponent>();
             FGUI = UnityGameFramework.Runtime.GameEntry.GetComponent<FGuiComponent>();
+            Camera = UnityGameFramework.Runtime.GameEntry.GetComponent<CameraComponent>();
+            Ground = UnityGameFramework.Runtime.GameEntry.GetComponent<GroundComponent>();
         }
     }
 }

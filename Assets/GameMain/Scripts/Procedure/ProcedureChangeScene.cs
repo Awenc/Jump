@@ -46,6 +46,10 @@ namespace StarForce
             // 隐藏所有实体
             GameEntry.Entity.HideAllLoadingEntities();
             GameEntry.Entity.HideAllLoadedEntities();
+            
+            // 关闭所有页面
+            GameEntry.UI.CloseAllLoadedUIForms();
+            GameEntry.UI.CloseAllLoadingUIForms();
 
             // 卸载所有场景
             string[] loadedSceneAssetNames = GameEntry.Scene.GetLoadedSceneAssetNames();

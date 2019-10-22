@@ -35,10 +35,24 @@ namespace StarForce
             entityComponent.HideEntity(entity.Entity);
         }
 
-//        public static void ShowMyAircraft(this EntityComponent entityComponent, MyAircraftData data)
-//        {
-//            entityComponent.ShowEntity(typeof(MyAircraft), "Aircraft", Constant.AssetPriority.MyAircraftAsset, data);
-//        }
+        public static void ShowPlayer(this EntityComponent entityComponent, PlayerData data)
+        {
+            entityComponent.ShowEntity(typeof(Player), "Player", Constant.AssetPriority.PlayerAssets, data);
+        }
+        public static void ShowGround(this EntityComponent entityComponent, GroundData data)
+        {
+            entityComponent.ShowEntity(typeof(Ground), "Ground", Constant.AssetPriority.GroundAssets, data);
+        }
+        
+        public static void ShowDeathGround(this EntityComponent entityComponent, DeathGroundData data)
+        {
+            entityComponent.ShowEntity(typeof(DeathGround), "Ground", Constant.AssetPriority.GroundAssets, data);
+        }
+        
+        public static void ShowMoveGround(this EntityComponent entityComponent, MoveGroundData data)
+        {
+            entityComponent.ShowEntity(typeof(MoveGround), "Ground", Constant.AssetPriority.GroundAssets, data);
+        }
 
         private static void ShowEntity(this EntityComponent entityComponent, Type logicType, string entityGroup, int priority, EntityData data)
         {

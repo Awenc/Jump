@@ -18,6 +18,8 @@ namespace StarForce
         /// </summary>
         MenuPage = 1,
         LoginPage = 2,
+        MainPage = 3,
+        GameOverPage = 4,
 
     }
 }

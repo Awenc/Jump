@@ -14,7 +14,6 @@ namespace StarForce
     public class ProcedureMenu : ProcedureBase
     {
         private bool m_StartGame = false;
-        private MenuForm m_MenuForm = null;
 
         public override bool UseNativeDialog
         {
@@ -33,18 +32,12 @@ namespace StarForce
         {
             base.OnEnter(procedureOwner);
 
-            GameEntry.Event.Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
-
             m_StartGame = false;
-            GameEntry.UI.OpenUIForm(UIFormId.LoginPage, this);
+            GameEntry.UI.OpenUIForm(UIFormId.MenuPage, this);
+            
+            GameEntry.Event.Subscribe(StartGameEventArgs.EventId,OnStartGame);
         }
 
-        protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
-        {
-            base.OnLeave(procedureOwner, isShutdown);
-
-            GameEntry.Event.Unsubscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
-        }
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
@@ -57,16 +50,16 @@ namespace StarForce
                 ChangeState<ProcedureChangeScene>(procedureOwner);
             }
         }
-
-        private void OnOpenUIFormSuccess(object sender, GameEventArgs e)
+        protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
         {
-//            OpenUIFormSuccessEventArgs ne = (OpenUIFormSuccessEventArgs)e;
-//            if (ne.UserData != this)
-//            {
-//                return;
-//            }
-//
-//            m_MenuForm = (MenuForm)ne.UIForm.Logic;
+            base.OnLeave(procedureOwner, isShutdown);
+
+            GameEntry.Event.Unsubscribe(StartGameEventArgs.EventId,OnStartGame);   
+        }
+
+        private void OnStartGame(object sender, GameEventArgs e)
+        {
+            m_StartGame = true;
         }
     }
 }

@@ -1,11 +1,6 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2019 Jiang Yin. All rights reserved.
-// Homepage: http://gameframework.cn/
-// Feedback: mailto:jiangyin@gameframework.cn
-//------------------------------------------------------------
-
+﻿using System;
 using System.Collections.Generic;
+using GameFramework.Event;
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
@@ -16,10 +11,18 @@ namespace StarForce
         private const float GameOverDelayedSeconds = 2f;
 
         private readonly Dictionary<GameMode, GameBase> m_Games = new Dictionary<GameMode, GameBase>();
+        
         private GameBase m_CurrentGame = null;
-        private bool m_GotoMenu = false;
-        private float m_GotoMenuDelaySeconds = 0f;
 
+        private bool m_GotoMenu = false;
+        
+        private float m_GotoMenuDelaySeconds = 0f;
+        public GameBase CurrentGame
+        {
+            get { return m_CurrentGame; }
+            set { m_CurrentGame = value; }
+        }
+        
         public override bool UseNativeDialog
         {
             get
@@ -36,14 +39,12 @@ namespace StarForce
         protected override void OnInit(ProcedureOwner procedureOwner)
         {
             base.OnInit(procedureOwner);
-
             m_Games.Add(GameMode.Survival, new SurvivalGame());
         }
 
         protected override void OnDestroy(ProcedureOwner procedureOwner)
         {
             base.OnDestroy(procedureOwner);
-
             m_Games.Clear();
         }
 
@@ -55,6 +56,10 @@ namespace StarForce
             GameMode gameMode = (GameMode)procedureOwner.GetData<VarInt>(Constant.ProcedureData.GameMode).Value;
             m_CurrentGame = m_Games[gameMode];
             m_CurrentGame.Initialize();
+            //打开战斗界面
+            GameEntry.UI.OpenUIForm(UIFormId.MainPage, this);
+            GameEntry.Event.Subscribe(GameOverEventArgs.EventId,OnGameOver);
+            
         }
 
         protected override void OnLeave(ProcedureOwner procedureOwner, bool isShutdown)
@@ -66,7 +71,18 @@ namespace StarForce
             }
 
             base.OnLeave(procedureOwner, isShutdown);
+
+            GameEntry.Event.Unsubscribe(GameOverEventArgs.EventId,OnGameOver);
+
         }
+
+        private void OnGameOver(object sender, GameEventArgs e)
+        {
+            //游戏结束
+            GameEntry.UI.OpenUIForm(UIFormId.GameOverPage, this);
+        }
+
+
 
         protected override void OnUpdate(ProcedureOwner procedureOwner, float elapseSeconds, float realElapseSeconds)
         {
@@ -78,18 +94,18 @@ namespace StarForce
                 return;
             }
 
-            if (!m_GotoMenu)
-            {
-                m_GotoMenu = true;
-                m_GotoMenuDelaySeconds = 0;
-            }
-
-            m_GotoMenuDelaySeconds += elapseSeconds;
-            if (m_GotoMenuDelaySeconds >= GameOverDelayedSeconds)
-            {
-                procedureOwner.SetData<VarInt>(Constant.ProcedureData.NextSceneId, GameEntry.Config.GetInt("Scene.Menu"));
-                ChangeState<ProcedureChangeScene>(procedureOwner);
-            }
+//            if (!m_GotoMenu)
+//            {
+//                m_GotoMenu = true;
+//                m_GotoMenuDelaySeconds = 0;
+//            }
+//
+//            m_GotoMenuDelaySeconds += elapseSeconds;
+//            if (m_GotoMenuDelaySeconds >= GameOverDelayedSeconds)
+//            {
+//                procedureOwner.SetData<VarInt>(Constant.ProcedureData.NextSceneId, GameEntry.Config.GetInt("Scene.Menu"));
+//                ChangeState<ProcedureChangeScene>(procedureOwner);
+//            }
         }
     }
 }
